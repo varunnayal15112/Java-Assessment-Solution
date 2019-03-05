@@ -1,9 +1,7 @@
 package com.varun.assessment.models;
 import java.lang.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.util.regex.*;
+
 
 
 enum EmployeeRole {
@@ -18,10 +16,11 @@ public class Employee {
 
     private String employeeName;
     private String emailID;
-    private Date dateOfJoining;
+    private String dateOfJoining;
     private EmployeeType employeeType;
     private String employeeID;
     private EmployeeRole employeeRole;
+    EmployeeLeavePortal leavePortal;
 
     private static int countOfEmployees;
 
@@ -32,7 +31,7 @@ public class Employee {
     Employee(String employeeName,String emailID,String dateOfJoining,EmployeeType employeeType,String employeeID,EmployeeRole employeeRole) throws Exception{
         this.employeeName=checkValidityOfEmployeeName(employeeName)?employeeName:null;
         this.emailID=checkValidityOfEmployeeEmailID(emailID)?emailID:null;
-        this.dateOfJoining=new SimpleDateFormat("dd/MM/yyyy").parse(dateOfJoining);
+        this.dateOfJoining=dateOfJoining;
         this.employeeType=employeeType;
         this.employeeID=generateEmployeeID();
         this.employeeRole=employeeRole;
