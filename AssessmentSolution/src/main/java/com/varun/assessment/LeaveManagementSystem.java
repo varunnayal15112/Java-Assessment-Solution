@@ -1,13 +1,17 @@
-package com.varun.assessment.models;
+package com.varun.assessment;
+
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
 public class LeaveManagementSystem {
 
     Map<String, ArrayList<String>> holidayChart = new HashMap<String, ArrayList<String>>();
 
-    void addPublicHoliday(EmployeeRole employeeRole, String month, String date) throws IllegalStateException {
+    boolean addPublicHoliday(EmployeeRole employeeRole, String month, String date) throws IllegalStateException {
         if (employeeRole == EmployeeRole.Admin) {
             Object value = holidayChart.get(month);
             if (value != null) {
@@ -25,6 +29,7 @@ public class LeaveManagementSystem {
                 holidayList.add(date);
                 holidayChart.put(month, holidayList);
             }
+            return true;
         } else
             throw new IllegalStateException("Access Denied !");
 
